@@ -31,23 +31,34 @@ def Menu():
         method.mostrar(id)
         repetir()
     elif op == 2:
-        id = input("Digite el id: ")
+        id = input("Digite el numero documento: ")
         method.mostrar(id)
         repetir()
     elif op == 3:
-        documento = input("Digite numero de documento: ")
-        nombre = input("Digite el nombre: ")
-        apellido = input("Digite el apellido: ")
-        telefono = input("Digite numero de telefono: ")
-        method.guardar(documento,nombre,apellido,telefono)
+        documento = input("Digite el numero de documento: ")
+        if documento == "":
+            print("No puede enviar el campo vacio!!")
+        else:
+            nombre = input("Digite el nombre: ")
+            if nombre == "":
+                print("No puede enviar el campo vacio!!")
+            else:
+                apellido = input("Digite el apellido: ")
+                if apellido == "":
+                    print("No puede enviar el campo vacio!!")
+                else:
+                    telefono = input("Digite el numero de telefono: ")
+                    if apellido == "":
+                        print("No puede enviar el campo vacio!!")
+                    else:
+                        method.guardar(documento,nombre,apellido,telefono)
         repetir()
-    elif op == 4:
-        id = input("Digite el id: ")
-        method.mostrar(id)
-        print("1. nombre")
-        print("2. apellido")
-        print("3. telefono")
-        op = int(input("¿Que campo desea editar?: "))
+    elif op == 5:
+        id = input("Digite el numero de documento: ")
+        if id == "":
+            print("No puede enviar el campo vacio!!")
+        else:
+            method.eliminar(id)
         repetir()
     elif op == 6:
         print("Gracias por usar el programa!!")
