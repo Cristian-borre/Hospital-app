@@ -10,13 +10,13 @@ def mostrar(id):
         if len(medicos) > 0:
             data = medicos['message']
             print(data+"\n")
-            print("{:<5} {:<15} {:<15} {:<15} {:<15}".format("#","documento","nombre","apellido","telefono"))
+            print("{:<5} {:<15} {:<20} {:<20} {:<15}".format("#","documento","nombre","apellido","telefono"))
             if data == "Medicos Listados":
                 data = medicos['Medicos']
                 num = 0
                 for me in data:
                     num = num + 1
-                    print("{:<5} {:<15} {:<15} {:<15} {:<15}".format(str(num),me['documento'],me['nombre'],me['apellido'],me['telefono']))
+                    print("{:<5} {:<15} {:<20} {:<20} {:<15}".format(str(num),me['documento'],me['nombre'],me['apellido'],me['telefono']))
         print("")
     else:
         peticion = requests.get(url+str(id))
@@ -41,6 +41,11 @@ def guardar(documento,nombre,apellido,telefono):
     peticion = requests.post(url, data = json.dumps(parametros))
     response = json.loads(peticion.content)
     print('Medico Guardado!!')
+
+def actualizar(documento, head, body):
+    parametros={head:body}
+    peticion = requests.patch(url+str(documento), json = parametros)
+    print('Medico Actualizado!!')
 
 def eliminar(documento):
     peticion = requests.delete(url+str(documento))

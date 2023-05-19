@@ -1,68 +1,46 @@
-import method
+from modulo_medico import main_medico
+from modulo_consultorio import main_consultorio
+from modulo_medicamento import main_medicamento
+from modulo_tratamiento import main_tratamiento
+from modulo_paciente import main_paciente
+from modulo_cita import main_cita
 import os
 
-def repetir():
-    op = input("¿Desea salir? (S/n): ")
-    if op == "s" or op == "S":
-        exit
-    elif op == "n" or op == "N":
-        clear(op)
-    else:
-        print("Digite una opcion valida!!")
-        repetir()
-
-def clear(op):
-    if op == "n" or op == "N":
-        os.system("cls")
-        Menu()
+def clear():
+    os.system("cls")
 
 def Menu():
-    print("\n======== Menu ========")
-    print("1. Listar Medicos")
-    print("2. Buscar Medico")
-    print("3. Registrar Medico")
-    print("4. Actualizar Medico")
-    print("5. Eliminar Medico")
-    print("6. Salir")
+    print("\n======== Menu Inicio ========")
+    print("1. Medicos")
+    print("2. Consultorios")
+    print("3. Citas")
+    print("4. Pacientes")
+    print("5. Tratamientos")
+    print("6. Medicamentos")
+    print("7. Salir")
     op = int(input("\nDigite una opcion: "))
     print("")
     if op == 1:
-        id = 0
-        method.mostrar(id)
-        repetir()
+        clear()
+        main_medico.menu()
     elif op == 2:
-        id = input("Digite el numero documento: ")
-        method.mostrar(id)
-        repetir()
+        clear()
+        main_consultorio.menu()
     elif op == 3:
-        documento = input("Digite el numero de documento: ")
-        if documento == "":
-            print("No puede enviar el campo vacio!!")
-        else:
-            nombre = input("Digite el nombre: ")
-            if nombre == "":
-                print("No puede enviar el campo vacio!!")
-            else:
-                apellido = input("Digite el apellido: ")
-                if apellido == "":
-                    print("No puede enviar el campo vacio!!")
-                else:
-                    telefono = input("Digite el numero de telefono: ")
-                    if apellido == "":
-                        print("No puede enviar el campo vacio!!")
-                    else:
-                        method.guardar(documento,nombre,apellido,telefono)
-        repetir()
+        clear()
+        main_cita.menu()
+    elif op == 4:
+        clear()
+        main_paciente.menu()
     elif op == 5:
-        id = input("Digite el numero de documento: ")
-        if id == "":
-            print("No puede enviar el campo vacio!!")
-        else:
-            method.eliminar(id)
-        repetir()
+        clear()
+        main_tratamiento.menu()
     elif op == 6:
-        print("Gracias por usar el programa!!")
-        exit
+        clear()
+        main_medicamento.menu()
+    elif op == 7:
+        print("Gracias por usar el programa!!\n")
+        exit()
     else:
         print("\nDigite una opcion valida!!")
         Menu()
